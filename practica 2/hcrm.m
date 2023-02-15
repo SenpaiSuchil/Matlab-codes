@@ -15,14 +15,15 @@ D=2;
 N=10000;
 conv=zeros([1 N]);
 for i=1:N
-    
-    y=xl+(xu-xl).*rand(D,1);
-    
+    y=x0;
+    j=randi([1 D]);
+    y(j)=xl(j)+(xu(j)-xl(j)).*rand();
     if f(y(1), y(2))< f(x0(1), x0(2))
         x0=y;
     end
     conv(i)=f(x0(1),x0(2));
 end
+
 z=f(x1,y1);
 
 figure
@@ -56,11 +57,11 @@ title('Gráfica en 2D','FontSize',15)
 xlabel('x','FontSize',15)
 ylabel('y','FontSize',15)
 
-
-%grafica de convergencia
+%convergencia
 figure
 hold on
 grid on
 plot(conv,'LineWidth',1);
 xlim([0 N]);
 title("convergencia")
+
