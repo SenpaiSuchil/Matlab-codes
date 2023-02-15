@@ -13,10 +13,9 @@ for i=1:N
     xr=xr-fp(xr)/fpp(xr);%newton raphson en ti confio
 end
 
-
+ %mostrar disp con resultados
 if (fpp(xr)<=0)
-    disp([fpp(xr)])%mostrar disp con resultados
-    disp(["es un maximo en x=" num2str(xr)])
+    disp(["hay un maximo en x=" num2str(xr)])
 else 
     disp([fpp(xr)])%mostrar disp con resultados
     disp(["es un minimo en x=" num2str(xr)])
@@ -32,6 +31,7 @@ plot(x, fpp(x), 'g-', 'LineWidth', 2)
 plot(xr, f(xr),'g*','LineWidth',2,'MarkerSize',12)
 %plot(xr, fp(xr),'g*','LineWidth',2,'MarkerSize',12)
 plot(xr, fpp(xr),'ro','LineWidth',2,'MarkerSize',12)
+plot(xr, fp(xr),'ro','LineWidth',2,'MarkerSize',12)
 legend({'función objetivo','fp(x)','fpp(x)', 'f(xr)', 'fpp(xr)'},'FontSize',10)
 title('Problema de la caja','FontSize',10)
 xlabel('x')

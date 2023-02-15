@@ -2,10 +2,9 @@ clear
 close all
 clc
 
- f = @(x,y) (x-2)^2+(y-2)^2; % funcion objetivo
- fpx=@(x) 2*(x-2);%derivada parcial con respecto de x
- fpy=@(y) 2*(y-2);%derivada parcial con respecto de y
-%f = @(x,y) (x-2).^2+(y-2).^2; % funcion objetivo
+f = @(x,y) (x-2).^2+(y-2).^2; % funcion objetivo
+fpx=@(x) 2*(x-2);%derivada parcial con respecto de x
+fpy=@(y) 2*(y-2);%derivada parcial con respecto de y
 
 
 x_lim = linspace(-5,5,50); % límites para eje x, -5 es inferior, 5 es superior, con 50 puntos
@@ -16,14 +15,16 @@ y_lim = linspace(-5,5,50); % límites para eje y, -5 es inferior, 5 es superior,
 x0=[-5 -5]';%posicion inicial
 h=0.1;%parametro de ajuste
 xi=x0;
-for i=1:1:500
+for i=1:500
     gradiente=[fpx(x0(1,1)),fpy(x0(2,1))]';%vector de derivadas parciales
     xi =xi-h*(gradiente); % evaluación de cada elemento en la rejilla para crear su valor en el eje z
     x0=xi;
 end
 z=f(x,y);
-f(x0(1,1), x0(2,1))
-x0
+disp(["f(x,y)=" num2str(f(x0(1,1),x0(2,1)))])
+disp(["x=" x0(1,1)])
+disp(["y=" x0(2,1)])
+
 
 figure
 hold on

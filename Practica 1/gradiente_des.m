@@ -1,7 +1,7 @@
 clear
 close all
 clc
-%preguntar al profe si está bien que grafique asi
+
  f = @(x,y) x.*exp(-x.^2-y.^2); % funcion objetivo
  fpx=@(x,y) exp(-x.^2-y.^2)-2*exp(-x.^2-y.^2)*x.^2;%derivada parcial con respecto de x
  fpy=@(x,y) (-2*exp(-x.^2-y.^2))*(x*y);%derivada parcial con respecto de y
@@ -12,17 +12,18 @@ x_lim = linspace(-5,5,50); % límites para eje x, -5 es inferior, 5 es superior,
 y_lim = linspace(-5,5,50); % límites para eje y, -5 es inferior, 5 es superior, con 50 puntos
 [x,y] = meshgrid(x_lim,y_lim); % creamos una rejilla de puntos (x,y) para crear el plot
 
-
-x0=[-1 -1]';%posicion inicial
+x0=[-1 -1]';%posicion inicial x y
 h=0.1;%parametro de ajuste
 xi=x0;
-for i=1:1:500
+for i=1:500
     gradiente=[fpx(x0(1,1),x0(2,1)),fpy(x0(1,1), x0(2,1))]';%vector de derivadas parciales
     xi =xi-h*(gradiente); % evaluación de cada elemento en la rejilla para crear su valor en el eje z
     x0=xi;
 end
 z=f(x,y);
-
+disp(["f(x,y)=" num2str(f(x0(1,1),x0(2,1)))])
+disp(["x=" x0(1,1)])
+disp(["y=" x0(2,1)])
 
 figure
 hold on
