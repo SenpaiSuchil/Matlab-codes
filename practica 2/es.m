@@ -13,8 +13,8 @@ xl=[-2 -2]';
 D=2;
 N=1000;
 sigma=0.01;
-%x0=xl+(xu-xl).*rand(D,1);
-x0=[-2 -2]';
+x0=xl+(xu-xl).*rand(1,D);
+%x0=[-2 -2]';
 conv=zeros([1 N]);
 
 for i=1:N
@@ -26,7 +26,9 @@ for i=1:N
     end
     conv(i)=f(x0(1),x0(2));
 end
-
+disp(["f(x,y)=" num2str(f(x0(1),x0(2)))])
+disp(["x=" x0(1)])
+disp(["y=" x0(2)])
 z=f(x1,y1);
 
 figure

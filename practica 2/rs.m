@@ -24,6 +24,9 @@ for i=1:N
     end
     conv(i)=f(x0(1),x0(2));%cambiamos los valores evaluando la funcion
 end
+disp(["f(x,y)=" num2str(f(x0(1,1),x0(2,1)))])
+disp(["x=" x0(1,1)])
+disp(["y=" x0(2,1)])
 z=f(x1,y1);
 
 figure
@@ -36,7 +39,7 @@ plot3(x0(1),x0(2),f(x0(1),x0(2)),'r*','LineWidth',2,'MarkerSize',10)% plot del m
 %el vector x0
 legend({'función','óptimo'},'FontSize',15)
 
-title('Gráfica en 3D','FontSize',15)
+title('Random Search 3D','FontSize',15)
 xlabel('x','FontSize',15)
 ylabel('y','FontSize',15)
 zlabel('f(x,y)','FontSize',15)
@@ -53,7 +56,7 @@ plot(x0(1),x0(2),'r*','LineWidth',2,'MarkerSize',10) % % plot del minimo encontr
 %el vector x0 pero ahora en 2D
 legend({'función','óptimo'},'FontSize',15)
 
-title('Gráfica en 2D','FontSize',15)
+title('Random Search 2D','FontSize',15)
 xlabel('x','FontSize',15)
 ylabel('y','FontSize',15)
 
@@ -64,4 +67,4 @@ hold on
 grid on
 plot(conv,'LineWidth',1);
 xlim([0 N]);
-title("convergencia")
+title("Random Search: convergencia")

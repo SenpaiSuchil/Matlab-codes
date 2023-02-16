@@ -23,7 +23,9 @@ for i=1:N
     end
     conv(i)=f(x0(1),x0(2));
 end
-
+disp(["f(x,y)=" num2str(f(x0(1),x0(2)))])
+disp(["x=" x0(1)])
+disp(["y=" x0(2)])
 z=f(x1,y1);
 
 figure
